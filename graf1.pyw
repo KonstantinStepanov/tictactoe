@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter.messagebox import askyesno
 import random
 
 degree = 3   # Стандартный размер игры 3x3
@@ -14,6 +15,7 @@ def onClick(event):             # Обработка нажатия игроко
     if board[row][col] == ' ':
         label.config(text='X')
         board[row][col] = 'X'
+        finisch()
         compMove()
 
 def newGame():                  # Очистка игрового поля и старт новой игры
@@ -33,6 +35,7 @@ def compMove():                 # Вывод 0 (нуля) как результ�
     row, col = computerMove()
     board[row][col] = '0'
     label[(row, col)].config(text='0')
+    finisch()
 
 def draw():                           # Проверка на ничью
     for row in board:
