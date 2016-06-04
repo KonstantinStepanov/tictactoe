@@ -62,7 +62,16 @@ def winner(mark):                # Определение победителя
             break
         else:
             return True
-        
+
+def finisch():
+     message = False
+     if winner('X'):
+         message = "Ты победил!"
+     elif winner('0'):
+         message = "Ты проиграл!"
+     elif draw():
+         message = "Ничья! Попробуй еще раз"
+     
 for r in range(0, degree):
     board.append([0] * degree)
     for k in range(0,degree):
