@@ -6,12 +6,18 @@ root = Tk()
 coord = {}
 label = {}
 board = []
+
 def onClick(event):
     label = event.widget
     row, col = coord[label]
     if board[row][col] == ' ':
         label.config(text='X')
         board[row][col] = 'X'
+
+def newGame():
+    for row, col in label.keys():
+        label[(row, col)].config(text=' ')
+        board[row][col] = ' '
         
 for r in range(0, degree):
     board.append([0] * degree)
