@@ -67,13 +67,20 @@ def winner(mark):                # Определение победителя
             return True
 
 def finisch():
-     message = False
+     message = None
      if winner('X'):
          message = "Ты победил!"
      elif winner('0'):
          message = "Ты проиграл!"
      elif draw():
          message = "Ничья! Попробуй еще раз"
+
+     if message:
+         result = "Игра окончена:" + message
+         if askyesno('Verify', result + '\n\nИграть еще раз?'):
+             newGame()
+         else:
+             root.destroy()
      
 for r in range(0, degree):
     board.append([0] * degree)
