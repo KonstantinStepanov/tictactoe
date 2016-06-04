@@ -33,7 +33,13 @@ def compMove():                 # Вывод 0 (нуля) как результ�
     row, col = computerMove()
     board[row][col] = '0'
     label[(row, col)].config(text='0')
-        
+
+def draw():                           # Проверка на ничью
+    for row in board:
+        if ' ' in row:
+            return False
+    return True
+
 for r in range(0, degree):
     board.append([0] * degree)
     for k in range(0,degree):
