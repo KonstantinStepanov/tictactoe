@@ -40,6 +40,29 @@ def draw():                           # Проверка на ничью
             return False
     return True
 
+def winner(mark):                # Определение победителя
+    for row in board:
+        if row.count(mark) == degree:
+            return True
+    for col in range(degree):
+        for row in board:
+            if row[col] != mark:
+                break
+            else:
+                return True
+    for row in range(degree):    # Проверка первой диагонали
+        col = row
+        if board[row][col] != mark:
+            break
+        else:
+            return True
+    for row in range(degree):      # Проверка второй диагонали
+        col = (degree - 1) - row
+        if board[row][col] != mark:
+            break
+        else:
+            return True
+        
 for r in range(0, degree):
     board.append([0] * degree)
     for k in range(0,degree):
