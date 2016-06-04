@@ -8,7 +8,7 @@ coord = {}
 label = {}
 board = []
 
-def onClick(event):
+def onClick(event):             # Обработка нажатия игроком мышью на свободное поле
     label = event.widget
     row, col = coord[label]
     if board[row][col] == ' ':
@@ -16,12 +16,12 @@ def onClick(event):
         board[row][col] = 'X'
         compMove()
 
-def newGame():
+def newGame():                  # Очистка игрового поля и старт новой игры
     for row, col in label.keys():
         label[(row, col)].config(text=' ')
         board[row][col] = ' '
 
-def computerMove():
+def computerMove():           # Рандомный выбор незанятой позиции для хода компьютера
     clear_cells = []
     for row in range(degree):
         for col in range(degree):
@@ -29,7 +29,7 @@ def computerMove():
                 clear_cells.append((row, col))
     return random.choice(clear_cells)
 
-def compMove():
+def compMove():                 # Вывод 0 (нуля) как результата ходя компьютера
     row, col = computerMove()
     board[row][col] = '0'
     label[(row, col)].config(text='0')
