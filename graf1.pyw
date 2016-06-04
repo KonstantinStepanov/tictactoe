@@ -29,7 +29,7 @@ for r in range(0, degree):
         label[(r, k)] = widget
         board[r][k] = ' '
 
-button1 = Button(root, text='New Game')
+button1 = Button(root, text='New Game', command=newGame)
 button1.grid()
 
 root.title('Крестики нолики')
