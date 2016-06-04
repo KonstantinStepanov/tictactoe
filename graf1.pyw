@@ -14,6 +14,7 @@ def onClick(event):
     if board[row][col] == ' ':
         label.config(text='X')
         board[row][col] = 'X'
+        compMove()
 
 def newGame():
     for row, col in label.keys():
@@ -22,11 +23,16 @@ def newGame():
 
 def computerMove():
     clear_cells = []
-    for row in degree:
-        for col in degree:
+    for row in range(degree):
+        for col in range(degree):
             if board[row][col] == ' ':
                 clear_cells.append((row, col))
     return random.choice(clear_cells)
+
+def compMove():
+    row, col = computerMove()
+    board[row][col] = '0'
+    label[(row, col)].config(text='0')
         
 for r in range(0, degree):
     board.append([0] * degree)
