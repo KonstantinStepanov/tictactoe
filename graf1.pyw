@@ -14,7 +14,12 @@ for r in range(0, degree):
         coord[widget] = (r, k)
         label[(r, k)] = widget
         board[r][k] = ' '
-        
+
+def onClick(event):
+    label = event.widget
+    row, col = coord[label]
+    if board[row][col] == ' ':
+        label.config(text='X')
 
 root.title('Крестики нолики')
 root.mainloop()
