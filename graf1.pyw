@@ -66,6 +66,7 @@ def winner(mark):                # Определение победителя
     else:
             return True
 
+    
 def finisch():
      message = None
      if winner('X'):
@@ -82,16 +83,18 @@ def finisch():
          else:
              root.destroy()
 
-for r in range(degree):
-    board.append([0] * degree)
-    for k in range(degree):
-        widget = Label(root, text=' ',relief=SUNKEN, width=10, height=5)
-        widget.grid(row=r, column=k, sticky=NSEW)
-        widget.bind('<Button-1>', onClick)
-        coord[widget] = (r, k)
-        label[(r, k)] = widget
-        board[r][k] = ' '
+def playGame():
+    for r in range(degree):
+        board.append([0] * degree)
+        for k in range(degree):
+            widget = Label(root, text=' ',relief=SUNKEN, width=10, height=5)
+            widget.grid(row=r, column=k, sticky=NSEW)
+            widget.bind('<Button-1>', onClick)
+            coord[widget] = (r, k)
+            label[(r, k)] = widget
+            board[r][k] = ' '
 
+playGame()
 button1 = Button(root, text='New Game', command=newGame)
 button1.grid()
 
