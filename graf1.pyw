@@ -93,18 +93,23 @@ def playGame():
             coord[widget] = (r, k)
             label[(r, k)] = widget
             board[r][k] = ' '
-
+            
+def startGame():
+    global child
+    child = Toplevel(root)
+    child.title('Крестики-нолики')
+    playGame()
+    button1 = Button(child, text='New Game', command=newGame)
+    button1.grid()
+    
 root = Tk()
 
 root.title('Крестики нолики')
 root.geometry('400x400+500+300')
 
-child = Toplevel(root)
-child.title('Крестики-нолики')
-playGame()
-button1 = Button(child, text='New Game', command=newGame)
-button1.grid()
-button2 = Button(root, text='Play')
+
+
+button2 = Button(root, text='Play', command=startGame)
 button2.grid(row=0, column=0)
 
 root.mainloop()
