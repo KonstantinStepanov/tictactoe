@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter.messagebox import askyesno
 import random
 
-degree = 3   # Стандартный размер игры 3x3
+degree = 3                        # Стандартный размер игры 3x3
 root = Tk()
 
 coord = {}
@@ -76,15 +76,15 @@ def finisch():
          message = "Ничья! Попробуй еще раз"
 
      if message:
-         result = "Игра окончена:" + message
-         if askyesno('Verify', result + '\n\nИграть еще раз?'):
-             newGame()
+         result = "Игра окончена:" + message           # При выборе продолжения игры делает ход,
+         if askyesno('Verify', result + '\n\nИграть еще раз?'):  # если первым в этот раз ходит компьютер
+             newGame()                                              # или ждет хода игрока.
          else:
              root.destroy()
-     
-for r in range(0, degree):
+
+for r in range(degree):
     board.append([0] * degree)
-    for k in range(0,degree):
+    for k in range(degree):
         widget = Label(root, text=' ',relief=SUNKEN, width=10, height=5)
         widget.grid(row=r, column=k, sticky=NSEW)
         widget.bind('<Button-1>', onClick)
