@@ -3,7 +3,7 @@ from tkinter.messagebox import askyesno
 import random
 
 degree = 3                        # Стандартный размер игры 3x3
-root = Tk()
+#root = Tk()
 
 coord = {}
 label = {}
@@ -87,16 +87,22 @@ def playGame():
     for r in range(degree):
         board.append([0] * degree)
         for k in range(degree):
-            widget = Label(root, text=' ',relief=SUNKEN, width=10, height=5)
+            widget = Label(child, text=' ',relief=SUNKEN, width=10, height=5)
             widget.grid(row=r, column=k, sticky=NSEW)
             widget.bind('<Button-1>', onClick)
             coord[widget] = (r, k)
             label[(r, k)] = widget
             board[r][k] = ' '
 
-playGame()
-button1 = Button(root, text='New Game', command=newGame)
-button1.grid()
+root = Tk()
 
 root.title('Крестики нолики')
+root.geometry('400x400+500+300')
+
+child = Toplevel(root)
+child.title('Крестики-нолики')
+playGame()
+button1 = Button(child, text='New Game', command=newGame)
+button1.grid()
+
 root.mainloop()
