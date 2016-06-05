@@ -51,19 +51,19 @@ def winner(mark):                # Определение победителя
         for row in board:
             if row[col] != mark:
                 break
-            else:
+        else:
                 return True
     for row in range(degree):    # Проверка первой диагонали
         col = row
         if board[row][col] != mark:
             break
-        else:
+    else:
             return True
     for row in range(degree):      # Проверка второй диагонали
         col = (degree - 1) - row
         if board[row][col] != mark:
             break
-        else:
+    else:
             return True
 
 def finisch():
