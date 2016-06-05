@@ -104,5 +104,7 @@ child.title('Крестики-нолики')
 playGame()
 button1 = Button(child, text='New Game', command=newGame)
 button1.grid()
+button2 = Button(root, text='Play')
+button2.grid(row=0, column=0)
 
 root.mainloop()
