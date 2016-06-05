@@ -110,6 +110,12 @@ root.geometry('400x400+500+300')
 
 
 button2 = Button(root, text='Play', command=startGame)
-button2.grid(row=0, column=0)
+button2.grid(row=1, column=0)
+button3 = Button(root, text='Новичок')
+button3.grid(row=0, column=0)
+button4 = Button(root, text='Специалист')
+button4.grid(row=0, column=1)
+button5 = Button(root, text='Эксперт')
+button5.grid(row=0, column=2)
 
 root.mainloop()
