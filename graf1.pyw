@@ -101,6 +101,14 @@ def startGame():
     playGame()
     button1 = Button(child, text='New Game', command=newGame)
     button1.grid()
+
+def degreeSpec():
+    global degree
+    degree = 5
+
+def degreeExsp():
+    global degree
+    degree = 9
     
 root = Tk()
 
@@ -113,9 +121,9 @@ button2 = Button(root, text='Play', command=startGame)
 button2.grid(row=1, column=0)
 button3 = Button(root, text='Новичок')
 button3.grid(row=0, column=0)
-button4 = Button(root, text='Специалист')
+button4 = Button(root, text='Специалист', command=degreeSpec)
 button4.grid(row=0, column=1)
-button5 = Button(root, text='Эксперт')
+button5 = Button(root, text='Эксперт', command=degreeExsp)
 button5.grid(row=0, column=2)
 
 root.mainloop()
