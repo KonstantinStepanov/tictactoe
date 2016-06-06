@@ -101,6 +101,9 @@ def startGame():
     playGame()
     button1 = Button(child, text='New Game', command=newGame)
     button1.grid()
+    child.grab_set()
+    child.focus_set()
+    child.wait_window()
 
 def degreeSpec():
     global degree
