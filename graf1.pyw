@@ -29,13 +29,19 @@ def computerMove():           # Рандомный выбор незанятой
         for col in range(degree):
             if board[row][col] == ' ':
                 clear_cells.append((row, col))
-    return random.choice(clear_cells)
+    if len(clear_cells) > 0:
+        return random.choice(clear_cells)
+    else:
+        return (-1, -1)
 
 def compMove():                 # Вывод 0 (нуля) как результата ходя компьютера
     row, col = computerMove()
-    board[row][col] = '0'
-    label[(row, col)].config(text='0')
-    finisch()
+    if row == -1:
+        pass
+    else:
+        board[row][col] = '0'
+        label[(row, col)].config(text='0')
+        finisch()
 
 def draw():                           # Проверка на ничью
     for row in board:
@@ -111,7 +117,9 @@ def degreeSpec():
 
 def degreeExsp():
     global degree
-    degree = 9
+    degree = 7
+
+some_text = "Добро пожаловать!\nВыберите режим игры"
     
 root = Tk()
 
@@ -119,14 +127,15 @@ root.title('Крестики нолики')
 root.geometry('400x400+500+300')
 
 
-
+lab = Label(root, text=some_text)
+lab.grid(row=0, column=0, columnspan=3, rowspan=3)
 button2 = Button(root, text='Play', command=startGame)
-button2.grid(row=1, column=0)
+button2.grid(row=4, column=0)
 button3 = Button(root, text='Новичок')
-button3.grid(row=0, column=0)
+button3.grid(row=3, column=0)
 button4 = Button(root, text='Специалист', command=degreeSpec)
-button4.grid(row=0, column=1)
+button4.grid(row=3, column=1)
 button5 = Button(root, text='Эксперт', command=degreeExsp)
-button5.grid(row=0, column=2)
+button5.grid(row=3, column=2)
 
 root.mainloop()
