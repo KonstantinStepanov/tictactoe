@@ -15,7 +15,7 @@ def onClick(event):             # Обработка нажатия игроко
     if board[row][col] == ' ':
         label.config(text='X')
         board[row][col] = 'X'
-        finisch()
+        finish()
         compMove()
 
 def newGame():                  # Очистка игрового поля и старт новой игры
@@ -34,14 +34,14 @@ def computerMove():           # Рандомный выбор незанятой
     else:
         return (-1, -1)
 
-def compMove():                 # Вывод 0 (нуля) как результата ходя компьютера
+def compMove():                 # Вывод 0 (нуля) как результата хода компьютера
     row, col = computerMove()
     if row == -1:
         pass
     else:
         board[row][col] = '0'
         label[(row, col)].config(text='0')
-        finisch()
+        finish()
 
 def draw():                           # Проверка на ничью
     for row in board:
@@ -53,19 +53,31 @@ def winner(mark):                # Определение победителя
     for row in board:
         if row.count(mark) == degree:
             return True
+    for row in board:                          # Возможность выигрыша в режимах Специалист и Эксперт
+        for col in range(degree):          #  если в горизонтальном ряду выбранны все клетки подряд кроме одной
+            if row[col] != mark:
+                break
+            elif degree > 3 and row.count(mark) == (degree - 1):
+                return True
+    for row in board:                          
+        for col in range(degree-1, -1, -1):            
+            if row[col] != mark:
+                break
+            elif degree > 3 and row.count(mark) == (degree - 1):
+                return True
     for col in range(degree):
         for row in board:
             if row[col] != mark:
                 break
         else:
-                return True
-    for row in range(degree):    # Проверка первой диагонали
+            return True
+    for row in range(degree):     # Проверка первой диагонали
         col = row
         if board[row][col] != mark:
             break
     else:
             return True
-    for row in range(degree):      # Проверка второй диагонали
+    for row in range(degree):       # Проверка второй диагонали
         col = (degree - 1) - row
         if board[row][col] != mark:
             break
@@ -73,7 +85,7 @@ def winner(mark):                # Определение победителя
             return True
 
     
-def finisch():
+def finish():
      message = None
      if winner('X'):
          message = "Ты победил!"
@@ -83,9 +95,9 @@ def finisch():
          message = "Ничья! Попробуй еще раз"
 
      if message:
-         result = "Игра окончена:" + message           # При выборе продолжения игры делает ход,
+         result = "Игра окончена:" + message                        # При выборе продолжения игры делает ход,
          if askyesno('Verify', result + '\n\nИграть еще раз?'):  # если первым в этот раз ходит компьютер
-             newGame()                                              # или ждет хода игрока.
+             newGame()                                                             # или ждет хода игрока.
          else:
              root.destroy()
 
@@ -114,12 +126,14 @@ def startGame():
 def degreeSpec():
     global degree
     degree = 5
+    startGame()
 
 def degreeExsp():
     global degree
     degree = 7
+    startGame()
 
-some_text = "Добро пожаловать!\nВыберите режим игры"
+some_text = "Добро пожаловать!\n\nВыберите режим игры"
     
 root = Tk()
 
@@ -128,14 +142,14 @@ root.geometry('400x400+500+300')
 
 
 lab = Label(root, text=some_text)
-lab.grid(row=0, column=0, columnspan=3, rowspan=3)
-button2 = Button(root, text='Play', command=startGame)
-button2.grid(row=4, column=0)
-button3 = Button(root, text='Новичок')
-button3.grid(row=3, column=0)
+lab.grid(row=0, column=0, columnspan=6, rowspan=3)
+lab2 = Label(root)
+lab2.grid(row=3, column=0, rowspan=5)
+button3 = Button(root, text='Новичок', command=startGame)
+button3.grid(row=8, column=0, columnspan=2)
 button4 = Button(root, text='Специалист', command=degreeSpec)
-button4.grid(row=3, column=1)
+button4.grid(row=8, column=2, columnspan=2)
 button5 = Button(root, text='Эксперт', command=degreeExsp)
-button5.grid(row=3, column=2)
+button5.grid(row=8, column=4, columnspan=2)
 
 root.mainloop()
