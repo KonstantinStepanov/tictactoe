@@ -123,6 +123,7 @@ def startGame():
     button1.grid()
     child.grab_set()
     child.focus_set()
+    child.resizable(False, False)
     child.wait_window()
 
 def degreeBeginner():
@@ -145,10 +146,11 @@ some_text = "Добро пожаловать!\n\nВыберите режим и�
 root = Tk()
 
 root.title('Крестики нолики')
-root.geometry('400x400+500+300')
+root.geometry('300x200+200+300')
+root.resizable(False, False)
 
 
-lab = Label(root, text=some_text, font=('Arial', 20))
+lab = Label(root, text=some_text, font=('Arial', 20), fg='green')
 lab.grid(row=0, column=0, columnspan=12, rowspan=3)
 lab2 = Label(root)
 lab2.grid(row=3, column=0, rowspan=5)
