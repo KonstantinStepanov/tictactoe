@@ -123,6 +123,11 @@ def startGame():
     child.focus_set()
     child.wait_window()
 
+def degreeBeginner():
+    global degree
+    degree = 3
+    startGame()
+    
 def degreeSpec():
     global degree
     degree = 5
@@ -145,7 +150,7 @@ lab = Label(root, text=some_text)
 lab.grid(row=0, column=0, columnspan=6, rowspan=3)
 lab2 = Label(root)
 lab2.grid(row=3, column=0, rowspan=5)
-button3 = Button(root, text='Новичок', command=startGame)
+button3 = Button(root, text='Новичок', command=degreeBeginner)
 button3.grid(row=8, column=0, columnspan=2)
 button4 = Button(root, text='Специалист', command=degreeSpec)
 button4.grid(row=8, column=2, columnspan=2)
