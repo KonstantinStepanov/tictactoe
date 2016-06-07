@@ -40,8 +40,10 @@ def compMove():                 # Вывод 0 (нуля) как результ�
         pass
     else:
         board[row][col] = '0'
-        label[(row, col)].config(text='0')
+        lab = label[(row, col)]
+        lab.config(text='0')
         finish()
+        
 
 def draw():                           # Проверка на ничью
     for row in board:
@@ -146,15 +148,15 @@ root.title('Крестики нолики')
 root.geometry('400x400+500+300')
 
 
-lab = Label(root, text=some_text)
-lab.grid(row=0, column=0, columnspan=6, rowspan=3)
+lab = Label(root, text=some_text, font=('Arial', 20))
+lab.grid(row=0, column=0, columnspan=12, rowspan=3)
 lab2 = Label(root)
 lab2.grid(row=3, column=0, rowspan=5)
-button3 = Button(root, text='Новичок', command=degreeBeginner)
-button3.grid(row=8, column=0, columnspan=2)
-button4 = Button(root, text='Специалист', command=degreeSpec)
-button4.grid(row=8, column=2, columnspan=2)
-button5 = Button(root, text='Эксперт', command=degreeExsp)
-button5.grid(row=8, column=4, columnspan=2)
+button3 = Button(root, text='Новичок', font=('Arial',10), bg='white', fg='blue', command=degreeBeginner)
+button3.grid(row=8, column=0, columnspan=4)
+button4 = Button(root, text='Специалист', font=('Arial', 10), bg='white', fg='blue',command=degreeSpec)
+button4.grid(row=8, column=4, columnspan=4)
+button5 = Button(root, text='Эксперт', font=('Arial', 10), bg='white', fg='blue', command=degreeExsp)
+button5.grid(row=8, column=8, columnspan=4)
 
 root.mainloop()
